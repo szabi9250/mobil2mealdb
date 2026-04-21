@@ -9,10 +9,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <!-- Recipe Title -->
-
-        <!-- Image -->
-
         <TextView
             android:id="@+id/dRecipetextView"
             android:layout_width="0dp"

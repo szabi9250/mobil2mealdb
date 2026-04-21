@@ -1,4 +1,6 @@
 package com.example.mobil2mealdb.ui;
 
-public class RecipeListFragment {
+import androidx.fragment.app.Fragment;
+
+public class RecipeListFragment extends Fragment {
 }

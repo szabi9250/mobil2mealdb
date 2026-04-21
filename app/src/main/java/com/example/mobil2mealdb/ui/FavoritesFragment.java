@@ -1,4 +1,6 @@
 package com.example.mobil2mealdb.ui;
 
-public class FavoritesFragment {
+import androidx.fragment.app.Fragment;
+
+public class FavoritesFragment extends Fragment {
 }

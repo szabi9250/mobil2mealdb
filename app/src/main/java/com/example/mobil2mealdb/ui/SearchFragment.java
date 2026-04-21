@@ -1,4 +1,6 @@
 package com.example.mobil2mealdb.ui;
 
-public class SearchFragment {
+import androidx.fragment.app.Fragment;
+
+public class SearchFragment extends Fragment {
 }

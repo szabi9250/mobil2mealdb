@@ -1,8 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph.xml">
 
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.mobil2mealdb.ui.HomeFragment"
+        android:label="Main Screen"
+        tools:layout="@layout/fragment_home" />
 
+    <fragment
+        android:id="@+id/addrecipeFragment"
+        android:name="com.example.mobil2mealdb.ui.AddRecipeFragment"
+        android:label="Add Recipe"
+        tools:layout="@layout/fragment_add_recipe" />
+
+    <fragment
+        android:id="@+id/favoritesFragment"
+        android:name="com.example.mobil2mealdb.ui.FavoritesFragment"
+        android:label="Favorites"
+        tools:layout="@layout/fragment_favorites" />
+
+    <fragment
+        android:id="@+id/recipedetailedFragment"
+        android:name="com.example.mobil2mealdb.ui.RecipeDetailedFragment"
+        android:label="Detailed recipe"
+        tools:layout="@layout/fragment_recipe_detailed" />
+
+    <fragment
+        android:id="@+id/recipelistFragment"
+        android:name="com.example.mobil2mealdb.ui.RecipeListFragment"
+        android:label="Recipe List"
+        tools:layout="@layout/fragment_recipe_list" />
+
+    <fragment
+        android:id="@+id/seachFragment"
+        android:name="com.example.mobil2mealdb.ui.SearchFragment"
+        android:label="Search"
+        tools:layout="@layout/fragment_search" />
 
 </navigation>
