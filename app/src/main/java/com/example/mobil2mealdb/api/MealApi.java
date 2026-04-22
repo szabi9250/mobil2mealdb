@@ -11,4 +11,7 @@ public interface MealApi {
 
     @GET("api/json/v1/1/lookup.php")
     Call<MealResponse> getMealById(@Query("i") String id);
+
+    @GET("api/json/v1/1/search.php")
+    Call<MealResponse> searchMealsByName(@Query("s") String query);
 }
