@@ -1,6 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.AddRecipeFragment" />
+    android:background="#F3F1F4">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <TextView
+            android:id="@+id/tvRecipeNameDetail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Recipe name"
+            android:textSize="24sp"
+            android:textColor="#444444"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="40dp"/>
+
+        <ImageView
+            android:id="@+id/ivRecipeDetail"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
+            android:src="@mipmap/ic_launcher_round"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="40dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="40dp">
+
+            <TextView
+                android:id="@+id/tvCategoryDetail"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Category:"
+                android:textSize="20sp"
+                android:textColor="#444444"/>
+
+            <TextView
+                android:id="@+id/tvCountryDetail"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Country:"
+                android:textSize="20sp"
+                android:textColor="#444444"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvIngredientsTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ingredients:"
+            android:textSize="20sp"
+            android:textColor="#444444"
+            android:layout_marginTop="28dp"/>
+
+        <TextView
+            android:id="@+id/tvIngredients"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Item 0&#10;Item 1&#10;Item 2&#10;Item 3&#10;Item 4"
+            android:textSize="18sp"
+            android:textColor="#444444"
+            android:layout_marginTop="8dp"/>
+
+        <TextView
+            android:id="@+id/tvInstructionsTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Instructions:"
+            android:textSize="20sp"
+            android:textColor="#444444"
+            android:layout_marginTop="28dp"/>
+
+        <TextView
+            android:id="@+id/tvInstructions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Write the instructions here..."
+            android:textSize="18sp"
+            android:textColor="#444444"
+            android:layout_marginTop="8dp"/>
+
+        <Button
+            android:id="@+id/btnFavorite"
+            android:layout_width="170dp"
+            android:layout_height="52dp"
+            android:text="Add to favorites"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:background="@drawable/button_rounded"
+            android:layout_gravity="end"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="20dp"/>
+    </LinearLayout>
+</ScrollView>
