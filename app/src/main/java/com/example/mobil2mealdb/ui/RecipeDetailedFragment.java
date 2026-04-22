@@ -1,5 +1,7 @@
 package com.example.mobil2mealdb.ui;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
@@ -28,7 +30,7 @@ public class RecipeDetailedFragment extends Fragment {
     private MealRepository repository;
     private TextView dRecipeText, dCategoryText, dCountryText, dInstructionsText;
     private ImageView dRecipeimageView;
-    private Button btnFavorite;
+    private Button btnFavorite, btnYT;
     private RecyclerView dIngredientsrecyclerView;
 
 
@@ -47,6 +49,7 @@ public class RecipeDetailedFragment extends Fragment {
         dRecipeimageView = view.findViewById(R.id.dRecipeimageView);
         btnFavorite = view.findViewById(R.id.btnFavorite);
         dIngredientsrecyclerView = view.findViewById(R.id.dIngredientsrecyclerView);
+        btnYT = view.findViewById(R.id.btnYT);
 
         repository = new MealRepository();
 
@@ -76,10 +79,17 @@ public class RecipeDetailedFragment extends Fragment {
                     dCountryText.setText("Country: " + meal.strArea);
                     dInstructionsText.setText(meal.strInstructions);
 
+                    btnYT.setOnClickListener(v -> {
+                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(meal.strYoutube)));
+                    });
+
                     Glide.with(dRecipeimageView)
                             .load(meal.strMealThumb)
                             .into(dRecipeimageView);
                 }
+
+
+
             }
 
             @Override
