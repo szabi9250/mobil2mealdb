@@ -11,11 +11,11 @@
 
         <TextView
             android:id="@+id/dRecipetextView"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="165dp"
+            android:layout_width="301dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="55dp"
             android:layout_marginTop="80dp"
-            android:layout_marginEnd="165dp"
+            android:layout_marginEnd="55dp"
             android:layout_marginBottom="16dp"
             android:text="Recipe name"
             app:layout_constraintBottom_toTopOf="@+id/dRecipeimageView"
@@ -70,25 +70,18 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:layout_marginEnd="334dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/dIngredientsrecyclerView"
-            app:layout_constraintVertical_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             tools:text="Instructions:" />
 
         <Button
             android:id="@+id/btnFavorite"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="112dp"
             android:text="Add to favorites"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/dInstructionstextView" />
+            app:layout_constraintTop_toBottomOf="@+id/dInstructionstextView" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
