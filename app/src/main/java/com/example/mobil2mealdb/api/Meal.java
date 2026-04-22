@@ -1,7 +1,7 @@
 package com.example.mobil2mealdb.api;
 
 public class Meal {
-    public int idMeal;
+    public String idMeal;
     public String strMeal;
     public String strCategory;
     public String strArea;

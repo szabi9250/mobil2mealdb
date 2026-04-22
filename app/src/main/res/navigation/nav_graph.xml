@@ -9,7 +9,12 @@
         android:id="@+id/homeFragment"
         android:name="com.example.mobil2mealdb.ui.HomeFragment"
         android:label="Main Screen"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home">
+
+        <action
+            android:id="@+id/hometodetailed"
+            app:destination="@id/recipedetailedFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/addrecipeFragment"
@@ -27,7 +32,12 @@
         android:id="@+id/recipedetailedFragment"
         android:name="com.example.mobil2mealdb.ui.RecipeDetailedFragment"
         android:label="Detailed recipe"
-        tools:layout="@layout/fragment_recipe_detailed" />
+        tools:layout="@layout/fragment_recipe_detailed">
+
+        <argument
+            android:name="mealId"
+            app:argType="string" />
+    </fragment>
 
     <fragment
         android:id="@+id/recipelistFragment"

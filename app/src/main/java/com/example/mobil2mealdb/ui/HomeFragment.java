@@ -10,6 +10,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import com.bumptech.glide.Glide;
 import com.example.mobil2mealdb.R;
@@ -25,7 +26,8 @@ public class HomeFragment extends Fragment {
     private TextView nameText, categoryText, countryText;
     private ImageView imageView;
     private Button randomButton;
-
+    private Button detailedviewButton;
+    private Meal currentMeal;
     private MealRepository repository;
     public HomeFragment() {
         super(R.layout.fragment_home);
@@ -40,12 +42,23 @@ public class HomeFragment extends Fragment {
         countryText = view.findViewById(R.id.countrytextView);
         imageView = view.findViewById(R.id.recipeImageView);
         randomButton = view.findViewById(R.id.randomButton);
+        detailedviewButton = view.findViewById(R.id.detailedviewButton);
 
         repository = new MealRepository();
 
-        loadRandomMeal(); // első betöltés
+        loadRandomMeal();
 
         randomButton.setOnClickListener(v -> loadRandomMeal());
+
+        detailedviewButton.setOnClickListener(v -> {
+            if (currentMeal != null) {
+                Bundle bundle = new Bundle();
+                bundle.putString("mealId", currentMeal.idMeal);
+
+                Navigation.findNavController(v)
+                        .navigate(R.id.hometodetailed, bundle);
+            }
+        });
     }
 
     private void loadRandomMeal() {
@@ -58,6 +71,7 @@ public class HomeFragment extends Fragment {
                 if (response.body() != null && response.body().meals != null) {
 
                     Meal meal = response.body().meals.get(0);
+                    currentMeal = meal;
 
                     nameText.setText(meal.strMeal);
                     categoryText.setText("Category: " + meal.strCategory);
