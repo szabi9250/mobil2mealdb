@@ -9,4 +9,8 @@ public class MealRepository {
         return api.getRandomMeal();
     }
     public Call<MealResponse> getMealById(String id) {return api.getMealById(id);}
+
+    public Call<MealResponse> searchMealsByName(String query) {
+        return api.searchMealsByName(query);
+    }
 }
