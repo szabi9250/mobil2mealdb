@@ -1,5 +1,8 @@
 package com.example.mobil2mealdb.api;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Meal {
     public String idMeal;
     public String strMeal;
@@ -43,4 +46,57 @@ public class Meal {
     public String strIngredient15;
     public String strMeasure15;
 
+    public List<IngredientItem> getIngredients() {
+        List<IngredientItem> list = new ArrayList<>();
+
+        if (strIngredient1 != null && !strIngredient1.isEmpty())
+            list.add(new IngredientItem(strIngredient1, strMeasure1));
+
+        if (strIngredient2 != null && !strIngredient2.isEmpty())
+            list.add(new IngredientItem(strIngredient2, strMeasure2));
+
+        if (strIngredient3 != null && !strIngredient3.isEmpty())
+            list.add(new IngredientItem(strIngredient3, strMeasure3));
+
+        if (strIngredient4 != null && !strIngredient4.isEmpty())
+            list.add(new IngredientItem(strIngredient4, strMeasure4));
+
+        if (strIngredient5 != null && !strIngredient5.isEmpty())
+            list.add(new IngredientItem(strIngredient5, strMeasure5));
+
+        if (strIngredient5 != null && !strIngredient5.isEmpty())
+            list.add(new IngredientItem(strIngredient5, strMeasure5));
+
+        if (strIngredient6 != null && !strIngredient6.isEmpty())
+            list.add(new IngredientItem(strIngredient6, strMeasure6));
+
+        if (strIngredient7 != null && !strIngredient7.isEmpty())
+            list.add(new IngredientItem(strIngredient7, strMeasure7));
+
+        if (strIngredient8 != null && !strIngredient8.isEmpty())
+            list.add(new IngredientItem(strIngredient8, strMeasure8));
+
+        if (strIngredient9 != null && !strIngredient9.isEmpty())
+            list.add(new IngredientItem(strIngredient9, strMeasure9));
+
+        if (strIngredient10 != null && !strIngredient10.isEmpty())
+            list.add(new IngredientItem(strIngredient10, strMeasure10));
+
+        if (strIngredient11 != null && !strIngredient11.isEmpty())
+            list.add(new IngredientItem(strIngredient11, strMeasure11));
+
+        if (strIngredient12 != null && !strIngredient12.isEmpty())
+            list.add(new IngredientItem(strIngredient12, strMeasure12));
+
+        if (strIngredient13 != null && !strIngredient13.isEmpty())
+            list.add(new IngredientItem(strIngredient13, strMeasure13));
+
+        if (strIngredient14 != null && !strIngredient14.isEmpty())
+            list.add(new IngredientItem(strIngredient14, strMeasure14));
+
+        if (strIngredient15 != null && !strIngredient15.isEmpty())
+            list.add(new IngredientItem(strIngredient15, strMeasure15));
+
+        return list;
+    }
 }

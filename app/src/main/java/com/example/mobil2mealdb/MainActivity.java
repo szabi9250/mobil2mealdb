@@ -3,6 +3,7 @@ package com.example.mobil2mealdb;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
@@ -13,6 +14,7 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.appcompat.widget.Toolbar;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.NavigationUI;
 
 
@@ -20,13 +22,20 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_main);
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
 
-    Toolbar mainToolbar = findViewById(R.id.mainToolbar);
-    setSupportActionBar(mainToolbar);
+        Toolbar mainToolbar = findViewById(R.id.mainToolbar);
+        setSupportActionBar(mainToolbar);
 
-    setTitle("Mobil2MealDB");
+        NavHostFragment navHostFragment =
+                (NavHostFragment) getSupportFragmentManager()
+                        .findFragmentById(R.id.nav_host_fragment);
+
+        NavController navController = navHostFragment.getNavController();
+
+        NavigationUI.setupWithNavController(mainToolbar, navController);
+        setTitle("Mobil2MealDB");
     }
 
     @Override
@@ -37,9 +46,10 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
 
-        return NavigationUI.onNavDestinationSelected(item,navController) || super.onOptionsItemSelected(item);
+        NavController navController =
+                Navigation.findNavController(this, R.id.nav_host_fragment);
 
+        return NavigationUI.onNavDestinationSelected(item, navController);
     }
 }

@@ -13,6 +13,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -83,13 +84,15 @@ public class RecipeDetailedFragment extends Fragment {
                         startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(meal.strYoutube)));
                     });
 
+                    IngredientAdapter adapter = new IngredientAdapter();
+                    dIngredientsrecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+                    dIngredientsrecyclerView.setAdapter(adapter);
+
+                    adapter.setItems(meal.getIngredients());
                     Glide.with(dRecipeimageView)
                             .load(meal.strMealThumb)
                             .into(dRecipeimageView);
                 }
-
-
-
             }
 
             @Override

@@ -49,6 +49,9 @@
         android:id="@+id/searchFragment"
         android:name="com.example.mobil2mealdb.ui.SearchFragment"
         android:label="Search"
-        tools:layout="@layout/fragment_search" />
-
+        tools:layout="@layout/fragment_search">
+    <action
+        android:id="@+id/hometodetailed"
+        app:destination="@id/recipedetailedFragment" />
+    </fragment>
 </navigation>
