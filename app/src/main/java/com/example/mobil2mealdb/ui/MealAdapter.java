@@ -21,7 +21,11 @@ import java.util.List;
 public class MealAdapter extends RecyclerView.Adapter<MealAdapter.MealViewHolder> {
 
     private List<Meal> mealList = new ArrayList<>();
+    private int actionId;
 
+    public MealAdapter(int actionId) {
+        this.actionId = actionId;
+    }
     public void setMeals(List<Meal> meals) {
         this.mealList = meals != null ? meals : new ArrayList<>();
         notifyDataSetChanged();
@@ -42,6 +46,9 @@ public class MealAdapter extends RecyclerView.Adapter<MealAdapter.MealViewHolder
 
         holder.tvName.setText(meal.strMeal);
 
+        holder.tvCategory.setText(meal.strCategory != null ? meal.strCategory : "");
+        holder.tvCountry.setText(meal.strArea != null ? meal.strArea : "");
+
 
         // Kép
         Glide.with(holder.itemView.getContext())
@@ -53,7 +60,8 @@ public class MealAdapter extends RecyclerView.Adapter<MealAdapter.MealViewHolder
             Bundle bundle = new Bundle();
             bundle.putString("mealId", meal.idMeal);
 
-            Navigation.findNavController(v).navigate(R.id.hometodetailed, bundle);
+
+            Navigation.findNavController(v).navigate(actionId, bundle);
         });
     }
 
@@ -65,12 +73,16 @@ public class MealAdapter extends RecyclerView.Adapter<MealAdapter.MealViewHolder
     static class MealViewHolder extends RecyclerView.ViewHolder {
         TextView tvName;
         ImageView ivThumb;
+        TextView tvCategory;
+        TextView tvCountry;
 
         public MealViewHolder(@NonNull View itemView) {
             super(itemView);
 
             tvName = itemView.findViewById(R.id.iRecipetextView);
             ivThumb = itemView.findViewById(R.id.iRecipeimageView);
+            tvCategory = itemView.findViewById(R.id.iCategorytextView);
+            tvCountry = itemView.findViewById(R.id.iCountrytextView);
         }
     }
 }

@@ -1,7 +1,16 @@
 package com.example.mobil2mealdb.api;
 
+import androidx.annotation.NonNull;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+@Entity(tableName = "favorite_meals")
 public class Meal {
-    public String idMeal;
+
+    @PrimaryKey
+    @NonNull
+    public String idMeal = ""; // ures alapertek
+
     public String strMeal;
     public String strCategory;
     public String strArea;
@@ -11,7 +20,7 @@ public class Meal {
     public String strYoutube;
     public String strSource;
 
-//Alapanyagok strIngredient1,strIngredient2....-ben vannak megadva 15-ig, a Measure is ugyanúgy hozzá párba
+    //Alapanyagok strIngredient1,strIngredient2....-ben vannak megadva 15-ig, a Measure is ugyanúgy hozzá párba
     public String strIngredient1;
     public String strMeasure1;
     public String strIngredient2;
