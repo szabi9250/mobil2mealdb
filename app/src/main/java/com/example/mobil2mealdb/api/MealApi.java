@@ -14,4 +14,11 @@ public interface MealApi {
 
     @GET("api/json/v1/1/search.php")
     Call<MealResponse> searchMealsByName(@Query("s") String query);
+
+    @GET("api/json/v1/1/filter.php")
+    Call<MealResponse> filterMealsByCategory(@Query("c") String category);
+
+
+    @GET("api/json/v1/1/filter.php")
+    Call<MealResponse> filterMealsByArea(@Query("a") String area);
 }

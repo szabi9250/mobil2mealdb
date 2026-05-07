@@ -12,11 +12,14 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.mobil2mealdb.api.Meal;
 import com.example.mobil2mealdb.api.MealRepository;
 import com.example.mobil2mealdb.api.MealResponse;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.textfield.TextInputEditText;
 import com.example.mobil2mealdb.R;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -27,7 +30,7 @@ public class SearchFragment extends Fragment {
     private RecyclerView rvSearchResults;
     private TextInputEditText etSearch;
     private Chip chipCategory;
-
+    private Chip chipCountry;
 
     private MealAdapter adapter;
     private MealRepository repository;
@@ -43,10 +46,11 @@ public class SearchFragment extends Fragment {
         rvSearchResults = view.findViewById(R.id.rvSearchResults);
         etSearch = view.findViewById(R.id.etSearch);
         chipCategory = view.findViewById(R.id.chipCategory);
+        chipCountry = view.findViewById(R.id.chipCountry);
 
 
         repository = new MealRepository();
-        adapter = new MealAdapter();
+        adapter = new MealAdapter(R.id.action_searchFragment_to_recipedetailedFragment);
 
         //
         rvSearchResults.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -67,18 +71,45 @@ public class SearchFragment extends Fragment {
         });
 
         chipCategory.setOnClickListener(v -> {
-            Toast.makeText(getContext(), "Kategória szűrő (Később valósítjuk meg)", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), "Kategória szűrő", Toast.LENGTH_SHORT).show();
         });
     }
 
 
     private void performSearch(String query) {
-        repository.searchMealsByName(query).enqueue(new Callback<MealResponse>() {
+        Call<MealResponse> call;
+
+        if (chipCategory != null && chipCategory.isChecked()) {
+            call = repository.filterMealsByCategory(query);
+        } else if (chipCountry != null && chipCountry.isChecked()) {
+            call = repository.filterMealsByArea(query);
+        } else {
+
+            call = repository.searchMealsByName(query);
+        }
+
+        call.enqueue(new Callback<MealResponse>() {
             @Override
             public void onResponse(Call<MealResponse> call, Response<MealResponse> response) {
                 if (response.body() != null && response.body().meals != null) {
 
-                    adapter.setMeals(response.body().meals);
+                    //letöltött lista egy változóba
+                    List<Meal> letoltottReceptek = response.body().meals;
+
+                    // Adat potlas
+                    for (Meal meal : letoltottReceptek) {
+                        if (chipCategory != null && chipCategory.isChecked()) {
+
+                            meal.strCategory = query;
+                        } else if (chipCountry != null && chipCountry.isChecked()) {
+
+                            meal.strArea = query;
+                        }
+                    }
+
+
+                    adapter.setMeals(letoltottReceptek);
+
                 } else {
                     Toast.makeText(getContext(), "Nincs találat erre: " + query, Toast.LENGTH_SHORT).show();
                     adapter.setMeals(null);

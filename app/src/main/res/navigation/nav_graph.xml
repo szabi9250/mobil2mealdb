@@ -26,7 +26,11 @@
         android:id="@+id/favoritesFragment"
         android:name="com.example.mobil2mealdb.ui.FavoritesFragment"
         android:label="Favorites"
-        tools:layout="@layout/fragment_favorites" />
+        tools:layout="@layout/fragment_favorites" >
+        <action
+            android:id="@+id/action_favoritesFragment_to_recipedetailedFragment"
+            app:destination="@id/recipedetailedFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/recipedetailedFragment"
@@ -49,6 +53,10 @@
         android:id="@+id/searchFragment"
         android:name="com.example.mobil2mealdb.ui.SearchFragment"
         android:label="Search"
-        tools:layout="@layout/fragment_search" />
+        tools:layout="@layout/fragment_search" >
+        <action
+            android:id="@+id/action_searchFragment_to_recipedetailedFragment"
+            app:destination="@id/recipedetailedFragment" />
+    </fragment>
 
 </navigation>

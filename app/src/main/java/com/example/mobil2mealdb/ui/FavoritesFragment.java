@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mobil2mealdb.R;
+import com.example.mobil2mealdb.api.AppDatabase;
 import com.example.mobil2mealdb.api.Meal;
 
 import java.util.ArrayList;
@@ -35,7 +36,7 @@ public class FavoritesFragment extends Fragment {
         tvEmptyFavorites = view.findViewById(R.id.tvEmptyFavorites);
 
 
-        adapter = new MealAdapter();
+        adapter = new MealAdapter(R.id.action_favoritesFragment_to_recipedetailedFragment);
         rvFavorites.setLayoutManager(new LinearLayoutManager(getContext()));
         rvFavorites.setAdapter(adapter);
 
@@ -45,17 +46,26 @@ public class FavoritesFragment extends Fragment {
 
     private void loadFavorites() {
 
-        List<Meal> favoriteMeals = new ArrayList<>();
+        new Thread(() -> {
 
 
-        if (favoriteMeals.isEmpty()) {
-            rvFavorites.setVisibility(View.GONE);
-            tvEmptyFavorites.setVisibility(View.VISIBLE);
-        } else {
+            AppDatabase db = AppDatabase.getInstance(requireContext());
+            List<Meal> favoriteMeals = db.mealDao().getAllFavorites();
 
-            rvFavorites.setVisibility(View.VISIBLE);
-            tvEmptyFavorites.setVisibility(View.GONE);
-            adapter.setMeals(favoriteMeals);
-        }
+
+            requireActivity().runOnUiThread(() -> {
+
+
+                if (favoriteMeals.isEmpty()) {
+                    rvFavorites.setVisibility(View.GONE);
+                    tvEmptyFavorites.setVisibility(View.VISIBLE);
+                } else {
+                    rvFavorites.setVisibility(View.VISIBLE);
+                    tvEmptyFavorites.setVisibility(View.GONE);
+                    adapter.setMeals(favoriteMeals);
+                }
+            });
+
+        }).start();
     }
 }
