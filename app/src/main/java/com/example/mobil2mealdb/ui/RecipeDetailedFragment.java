@@ -3,6 +3,7 @@ package com.example.mobil2mealdb.ui;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -46,6 +47,8 @@ public class RecipeDetailedFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+
 
         dRecipeText = view.findViewById(R.id.dRecipetextView);
         dCategoryText = view.findViewById(R.id.dCategorytextView);
