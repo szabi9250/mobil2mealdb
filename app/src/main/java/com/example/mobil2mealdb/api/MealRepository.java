@@ -13,4 +13,14 @@ public class MealRepository {
     public Call<MealResponse> searchMealsByName(String query) {
         return api.searchMealsByName(query);
     }
+
+    // Kategoria
+    public Call<MealResponse> filterMealsByCategory(String category) {
+        return api.filterMealsByCategory(category);
+    }
+
+    // Orszag
+    public Call<MealResponse> filterMealsByArea(String area) {
+        return api.filterMealsByArea(area);
+    }
 }
