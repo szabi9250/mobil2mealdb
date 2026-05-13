@@ -71,7 +71,7 @@ public class SearchFragment extends Fragment {
         });
 
         chipCategory.setOnClickListener(v -> {
-            Toast.makeText(getContext(), "Kategória szűrő", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), "Filter", Toast.LENGTH_SHORT).show();
         });
     }
 
@@ -111,14 +111,14 @@ public class SearchFragment extends Fragment {
                     adapter.setMeals(letoltottReceptek);
 
                 } else {
-                    Toast.makeText(getContext(), "Nincs találat erre: " + query, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "No match: " + query, Toast.LENGTH_SHORT).show();
                     adapter.setMeals(null);
                 }
             }
 
             @Override
             public void onFailure(Call<MealResponse> call, Throwable t) {
-                Toast.makeText(getContext(), "Hiba a hálózati lekérés során", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Error during network query", Toast.LENGTH_SHORT).show();
             }
         });
     }

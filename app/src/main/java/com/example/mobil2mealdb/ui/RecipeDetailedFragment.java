@@ -13,6 +13,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -91,6 +92,14 @@ public class RecipeDetailedFragment extends Fragment {
                         startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(meal.strYoutube)));
                     });
 
+
+                    //Ingredientek és measureök
+                    IngredientAdapter adapter = new IngredientAdapter();
+                    dIngredientsrecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+                    dIngredientsrecyclerView.setAdapter(adapter);
+
+                    adapter.setItems(meal.getIngredients());
+
                     // --- KEDVENCEK
 
                     new Thread(() -> {
@@ -112,14 +121,14 @@ public class RecipeDetailedFragment extends Fragment {
                                 isFavoriteRecipe = false;
                                 requireActivity().runOnUiThread(() -> {
                                     btnFavorite.setText("Add to Favorites");
-                                    Toast.makeText(getContext(), "Eltávolítva a kedvencekből 💔", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getContext(), "Removed from favorites 💔", Toast.LENGTH_SHORT).show();
                                 });
                             } else {
                                 db.mealDao().insertFavorite(meal);
                                 isFavoriteRecipe = true;
                                 requireActivity().runOnUiThread(() -> {
                                     btnFavorite.setText("Remove Favorite");
-                                    Toast.makeText(getContext(), "Sikeresen mentve a Kedvencek közé! ❤️", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getContext(), "Successfully saved to favorites! ❤️", Toast.LENGTH_SHORT).show();
                                 });
                             }
                         }).start();
