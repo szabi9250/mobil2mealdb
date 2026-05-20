@@ -2,102 +2,162 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F3F1F4">
+    android:background="#F5F3F7">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="20dp">
+        android:padding="24dp"
+        android:gravity="center_horizontal">
 
         <TextView
             android:id="@+id/tvRecipeNameDetail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Recipe name"
-            android:textSize="24sp"
-            android:textColor="#444444"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="40dp"/>
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="#3D3D3D"
+            android:layout_marginTop="20dp"/>
 
         <ImageView
             android:id="@+id/ivRecipeDetail"
-            android:layout_width="160dp"
-            android:layout_height="160dp"
-            android:src="@mipmap/ic_launcher_round"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="40dp"/>
+            android:layout_width="180dp"
+            android:layout_height="180dp"
+            android:layout_marginTop="28dp"
+            android:background="@android:color/white"
+            android:padding="8dp"
+            android:scaleType="centerCrop"
+            android:elevation="4dp"
+            android:src="@mipmap/ic_launcher_round"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="40dp">
+            android:layout_marginTop="32dp">
 
-            <TextView
-                android:id="@+id/tvCategoryDetail"
+            <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Category:"
-                android:textSize="20sp"
-                android:textColor="#444444"/>
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/tvCountryDetail"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Category"
+                    android:textColor="#8E8E8E"
+                    android:textSize="14sp"/>
+
+                <TextView
+                    android:id="@+id/tvCategoryDetail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Dessert"
+                    android:textStyle="bold"
+                    android:textColor="#444444"
+                    android:textSize="16sp"
+                    android:layout_marginTop="4dp"/>
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Country:"
-                android:textSize="20sp"
-                android:textColor="#444444"/>
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Country"
+                    android:textColor="#8E8E8E"
+                    android:textSize="14sp"/>
+
+                <TextView
+                    android:id="@+id/tvCountryDetail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Hungary"
+                    android:textStyle="bold"
+                    android:textColor="#444444"
+                    android:textSize="16sp"
+                    android:layout_marginTop="4dp"/>
+            </LinearLayout>
+
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/tvIngredientsTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Ingredients:"
-            android:textSize="20sp"
-            android:textColor="#444444"
-            android:layout_marginTop="28dp"/>
-
-        <TextView
-            android:id="@+id/tvIngredients"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Item 0&#10;Item 1&#10;Item 2&#10;Item 3&#10;Item 4"
-            android:textSize="18sp"
-            android:textColor="#444444"
-            android:layout_marginTop="8dp"/>
+            android:orientation="vertical"
+            android:background="@android:color/white"
+            android:elevation="2dp"
+            android:padding="20dp"
+            android:layout_marginTop="28dp">
 
-        <TextView
-            android:id="@+id/tvInstructionsTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Instructions:"
-            android:textSize="20sp"
-            android:textColor="#444444"
-            android:layout_marginTop="28dp"/>
+            <TextView
+                android:id="@+id/tvIngredientsTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ingredients"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:textColor="#3D3D3D"/>
 
-        <TextView
-            android:id="@+id/tvInstructions"
+            <TextView
+                android:id="@+id/tvIngredients"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="• Item 1\n• Item 2\n• Item 3"
+                android:textSize="16sp"
+                android:textColor="#555555"
+                android:layout_marginTop="12dp"/>
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Write the instructions here..."
-            android:textSize="18sp"
-            android:textColor="#444444"
-            android:layout_marginTop="8dp"/>
+            android:orientation="vertical"
+            android:background="@android:color/white"
+            android:elevation="2dp"
+            android:padding="20dp"
+            android:layout_marginTop="20dp">
+
+            <TextView
+                android:id="@+id/tvInstructionsTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Instructions"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:textColor="#3D3D3D"/>
+
+            <TextView
+                android:id="@+id/tvInstructions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Write the instructions here..."
+                android:textSize="16sp"
+                android:lineSpacingExtra="4dp"
+                android:textColor="#555555"
+                android:layout_marginTop="12dp"/>
+        </LinearLayout>
 
         <Button
             android:id="@+id/btnFavorite"
-            android:layout_width="170dp"
-            android:layout_height="52dp"
+            android:layout_width="220dp"
+            android:layout_height="56dp"
             android:text="Add to favorites"
             android:textAllCaps="false"
+            android:textStyle="bold"
             android:textColor="#FFFFFF"
-            android:layout_gravity="end"
-            android:layout_marginTop="40dp"
-            android:layout_marginBottom="20dp"/>
+            android:textSize="16sp"
+            android:backgroundTint="#6F52C8"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="32dp"/>
+
     </LinearLayout>
+
 </ScrollView>
