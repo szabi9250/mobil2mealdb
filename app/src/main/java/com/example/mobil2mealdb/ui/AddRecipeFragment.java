@@ -31,15 +31,28 @@ public class AddRecipeFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                isFavorite = !isFavorite;
+                Meal meal = new Meal();
 
-                if (isFavorite) {
-                    btnFavorite.setText("Added");
-                    Toast.makeText(getActivity(), "Recipe added to favorites", Toast.LENGTH_SHORT).show();
-                } else {
-                    btnFavorite.setText("Add to favorites");
-                    Toast.makeText(getActivity(), "Recipe removed from favorites", Toast.LENGTH_SHORT).show();
-                }
+                meal.idMeal = "local_" + System.currentTimeMillis();
+                meal.strMeal = "Custom Recipe";
+                meal.strCategory = "Local";
+                meal.strArea = "Own";
+                meal.strInstructions = "User added recipe";
+                meal.strMealThumb = "";
+
+                new Thread(() -> {
+
+                    AppDatabase db = AppDatabase.getInstance(requireContext());
+                    db.mealDao().insertFavorite(meal);
+
+                    requireActivity().runOnUiThread(() -> {
+                        btnFavorite.setText("Added");
+                        Toast.makeText(getActivity(),
+                                "Recipe added to favorites",
+                                Toast.LENGTH_SHORT).show();
+                    });
+
+                }).start();
             }
         });
 
