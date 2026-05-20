@@ -35,11 +35,9 @@ public class FavoritesFragment extends Fragment {
         rvFavorites = view.findViewById(R.id.rvFavorites);
         tvEmptyFavorites = view.findViewById(R.id.tvEmptyFavorites);
 
-
         adapter = new MealAdapter(R.id.action_favoritesFragment_to_recipedetailedFragment);
         rvFavorites.setLayoutManager(new LinearLayoutManager(getContext()));
         rvFavorites.setAdapter(adapter);
-
 
         loadFavorites();
     }
@@ -48,13 +46,11 @@ public class FavoritesFragment extends Fragment {
 
         new Thread(() -> {
 
-
             AppDatabase db = AppDatabase.getInstance(requireContext());
             List<Meal> favoriteMeals = db.mealDao().getAllFavorites();
 
 
             requireActivity().runOnUiThread(() -> {
-
 
                 if (favoriteMeals.isEmpty()) {
                     rvFavorites.setVisibility(View.GONE);
