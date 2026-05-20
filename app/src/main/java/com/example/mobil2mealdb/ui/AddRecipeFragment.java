@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
+import com.example.mobil2mealdb.api.AppDatabase;
+import com.example.mobil2mealdb.api.Meal;
 
 import com.example.mobil2mealdb.R;
 
